@@ -1,13 +1,11 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { DetailsComponent } from './details/details.component';
-import { RegistryComponent } from './registry/registry.component';
-import { RsvpComponent } from './rsvp/rsvp.component';
+import { MainPageComponent } from './main-page/main-page.component';
+import { StayComponent } from './stay/stay.component';
+import { ExploreComponent } from './explore/explore.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'details', component: DetailsComponent },
-  { path: 'registry', component: RegistryComponent },
-  { path: 'rsvp', component: RsvpComponent },
+  { path: '', component: MainPageComponent },
+  { path: 'stay', component: StayComponent },
+  { path: 'explore', component: ExploreComponent },
   { path: '**', redirectTo: '' }
 ];

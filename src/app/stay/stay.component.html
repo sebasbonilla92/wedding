@@ -1,0 +1,62 @@
+<!-- Back link -->
+<div class="bg-cream px-6 pt-6">
+  <a routerLink="/" class="font-sans text-xs tracking-widest uppercase text-sage hover:text-gold transition-colors" style="letter-spacing: 0.12em;">
+    ← Back to Home
+  </a>
+</div>
+
+<!-- Header -->
+<section class="py-20 bg-cream text-center px-4">
+  <div class="fade-in">
+    <h1 class="section-title" style="font-family: 'Great Vibes', cursive;">Where to Stay</h1>
+    <div class="divider max-w-xs mx-auto">
+      <span class="text-gold text-lg">✦</span>
+    </div>
+    <p class="font-serif text-lg text-gray-500 italic max-w-md mx-auto" style="font-family: 'Playfair Display', serif;">
+      Medellín has wonderful options for every style and budget. Here are our recommendations.
+    </p>
+  </div>
+</section>
+
+<!-- Neighborhoods -->
+<section class="pb-16 bg-cream">
+  <div class="max-w-3xl mx-auto px-4">
+
+    <div class="fade-in text-center mb-10">
+      <h2 class="font-serif text-2xl text-sage font-light tracking-widest uppercase" style="font-family: 'Playfair Display', serif; letter-spacing: 0.15em;">
+        Choose Your Neighborhood
+      </h2>
+      <div class="w-16 h-px bg-gold mx-auto mt-4 opacity-60"></div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-16">
+      <div *ngFor="let n of neighborhoods" class="fade-in border border-gold border-opacity-20 bg-white bg-opacity-50 p-6 text-center">
+        <p class="font-sans text-xs tracking-widest uppercase text-gold mb-3" style="letter-spacing: 0.12em;">{{ n.tag }}</p>
+        <h3 class="font-serif text-2xl text-sage mb-3" style="font-family: 'Playfair Display', serif;">{{ n.name }}</h3>
+        <div class="w-8 h-px bg-gold mx-auto mb-4 opacity-50"></div>
+        <p class="font-sans text-sm text-gray-500 leading-relaxed">{{ n.description }}</p>
+      </div>
+    </div>
+
+    <!-- Airbnb + Hotels -->
+    <div class="fade-in grid md:grid-cols-2 gap-6">
+      <div class="border border-gold border-opacity-20 bg-white bg-opacity-50 p-8 text-center">
+        <h3 class="font-serif text-2xl text-sage mb-2" style="font-family: 'Playfair Display', serif;">Airbnb</h3>
+        <div class="w-8 h-px bg-gold mx-auto my-4 opacity-50"></div>
+        <p class="font-sans text-sm text-gray-500 leading-relaxed mb-5">
+          Medellín has a fantastic selection of apartments and houses on Airbnb. We recommend searching in Envigado or El Poblado for the best proximity to the wedding.
+        </p>
+        <p class="font-sans text-xs text-gray-400 italic">Search "Envigado" or "El Poblado" on Airbnb for Sep 4–7.</p>
+      </div>
+      <div class="border border-gold border-opacity-20 bg-white bg-opacity-50 p-8 text-center">
+        <h3 class="font-serif text-2xl text-sage mb-2" style="font-family: 'Playfair Display', serif;">Hotels</h3>
+        <div class="w-8 h-px bg-gold mx-auto my-4 opacity-50"></div>
+        <p class="font-sans text-sm text-gray-500 leading-relaxed mb-5">
+          El Poblado has the highest concentration of hotels in the city, from boutique options to larger chains. We'll add specific recommendations here soon.
+        </p>
+        <p class="font-sans text-xs text-gray-400 italic">More hotel picks coming soon.</p>
+      </div>
+    </div>
+
+  </div>
+</section>

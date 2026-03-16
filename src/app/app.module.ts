@@ -6,18 +6,22 @@ import { RouterModule } from '@angular/router';
 
 import { routes } from './app.routes';
 import { AppComponent } from './app.component';
+import { MainPageComponent } from './main-page/main-page.component';
 import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
-import { RegistryComponent } from './registry/registry.component';
 import { RsvpComponent } from './rsvp/rsvp.component';
+import { StayComponent } from './stay/stay.component';
+import { ExploreComponent } from './explore/explore.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    MainPageComponent,
     HomeComponent,
     DetailsComponent,
-    RegistryComponent,
     RsvpComponent,
+    StayComponent,
+    ExploreComponent,
   ],
   imports: [
     BrowserModule,

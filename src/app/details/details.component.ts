@@ -6,12 +6,48 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  schedule = [
-    { time: '3:30 PM', event: 'Guests Arrive', description: 'Please arrive and find your seats' },
-    { time: '4:00 PM', event: 'Ceremony Begins', description: 'Join us as we exchange our vows' },
-    { time: '4:45 PM', event: 'Reception & Dinner', description: 'Celebrate with dinner and dancing' },
-    { time: '7:00 PM', event: 'Evening Celebrations', description: 'Continue the festivities into the night' },
+  selectedDay = 1;
+
+  days = [
+    {
+      label: 'Friday',
+      date: 'Sep 4',
+      title: 'Welcome Party',
+      venue: 'Cannario',
+      description: 'Kick off the weekend with drinks, music, and great company.',
+      events: [
+        { time: '7:00 PM', event: 'Doors Open', description: 'Arrive, settle in, and mingle' },
+        { time: '8:00 PM', event: 'Welcome Party', description: 'Celebrate the start of the weekend with us at Cannario' },
+      ]
+    },
+    {
+      label: 'Saturday',
+      date: 'Sep 5',
+      title: 'The Wedding',
+      venue: 'Le Pinot',
+      description: 'The big day. Join us as we say I do at Le Pinot in Envigado.',
+      events: [
+        { time: '3:30 PM', event: 'Guests Arrive', description: 'Please arrive and find your seats' },
+        { time: '4:00 PM', event: 'Ceremony Begins', description: 'Join us as we exchange our vows' },
+        { time: '4:45 PM', event: 'Cocktail Hour', description: 'Celebrate with drinks and hors d\'oeuvres' },
+        { time: '6:00 PM', event: 'Reception & Dinner', description: 'Dinner and dancing with the newlyweds' },
+      ]
+    },
+    {
+      label: 'Sunday',
+      date: 'Sep 6',
+      title: 'Chiva Party',
+      venue: 'Around Antioquia',
+      description: 'Close out the weekend on a traditional Colombian chiva through the beautiful small towns near Medellín.',
+      events: [
+        { time: 'TBD', event: 'Chiva Departs', description: 'Hop on board — details coming soon' },
+      ]
+    }
   ];
+
+  selectDay(index: number): void {
+    this.selectedDay = index;
+  }
 
   ngOnInit(): void {
     this.initIntersectionObserver();

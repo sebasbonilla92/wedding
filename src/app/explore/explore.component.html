@@ -1,0 +1,65 @@
+<!-- Back link -->
+<div class="bg-cream px-6 pt-6">
+  <a routerLink="/" class="font-sans text-xs tracking-widest uppercase text-sage hover:text-gold transition-colors" style="letter-spacing: 0.12em;">
+    ← Back to Home
+  </a>
+</div>
+
+<!-- Header -->
+<section class="py-20 bg-cream text-center px-4">
+  <div class="fade-in">
+    <h1 class="section-title" style="font-family: 'Great Vibes', cursive;">Explore Medellín</h1>
+    <div class="divider max-w-xs mx-auto">
+      <span class="text-gold text-lg">✦</span>
+    </div>
+    <p class="font-serif text-lg text-gray-500 italic max-w-md mx-auto" style="font-family: 'Playfair Display', serif;">
+      Make the most of your trip. Here are our favorite things to do in and around the city.
+    </p>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="pb-24 bg-cream">
+  <div class="max-w-3xl mx-auto px-4">
+
+    <div *ngFor="let cat of categories" class="fade-in mb-14">
+      <div class="text-center mb-6">
+        <h2 class="font-serif text-2xl text-sage font-light" style="font-family: 'Playfair Display', serif;">
+          {{ cat.label }}
+        </h2>
+        <div class="w-12 h-px bg-gold mx-auto mt-3 opacity-60"></div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4">
+        <div *ngFor="let place of cat.places"
+             class="border border-gold border-opacity-20 bg-white bg-opacity-50 p-5 text-center">
+          <h3 class="font-serif text-lg text-sage mb-2" style="font-family: 'Playfair Display', serif;">
+            {{ place.name }}
+          </h3>
+          <p class="font-sans text-sm text-gray-500 leading-relaxed">{{ place.note }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tips block -->
+    <div class="fade-in border border-gold border-opacity-20 bg-white bg-opacity-50 p-8 text-center mt-4">
+      <h2 class="font-serif text-2xl text-sage mb-2" style="font-family: 'Playfair Display', serif;">Good to Know</h2>
+      <div class="w-12 h-px bg-gold mx-auto my-4 opacity-60"></div>
+      <div class="grid md:grid-cols-3 gap-6 text-left">
+        <div>
+          <p class="font-sans text-xs tracking-widest uppercase text-gold mb-2" style="letter-spacing: 0.1em;">Weather</p>
+          <p class="font-sans text-sm text-gray-500">September is the rainy season — warm (22–27°C) with afternoon showers. Bring a light layer.</p>
+        </div>
+        <div>
+          <p class="font-sans text-xs tracking-widest uppercase text-gold mb-2" style="letter-spacing: 0.1em;">Getting Around</p>
+          <p class="font-sans text-sm text-gray-500">Uber and InDrive work well. The Metro is great for sightseeing. Avoid taxis off the street.</p>
+        </div>
+        <div>
+          <p class="font-sans text-xs tracking-widest uppercase text-gold mb-2" style="letter-spacing: 0.1em;">Currency</p>
+          <p class="font-sans text-sm text-gray-500">Colombian Peso (COP). ATMs are widely available. Cards accepted at most restaurants.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
