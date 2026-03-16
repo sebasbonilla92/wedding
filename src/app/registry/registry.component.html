@@ -1,0 +1,84 @@
+<!-- Page Header -->
+<section class="py-20 bg-cream text-center px-4">
+  <div class="fade-in">
+    <h1 class="section-title" style="font-family: 'Great Vibes', cursive;">Registry</h1>
+    <div class="divider max-w-xs mx-auto">
+      <span class="text-gold text-lg">✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- Intro Text -->
+<section class="pb-8 bg-cream">
+  <div class="max-w-2xl mx-auto px-4 text-center fade-in">
+    <p class="font-serif text-xl text-gray-600 leading-relaxed italic" style="font-family: 'Playfair Display', serif;">
+      Your presence is the greatest gift. If you'd like to honor us with a gift, we are registered at the following:
+    </p>
+    <div class="w-16 h-px bg-gold mx-auto mt-6 opacity-60"></div>
+  </div>
+</section>
+
+<!-- Registry Cards -->
+<section class="py-16 bg-cream">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div *ngFor="let registry of registries"
+           class="fade-in registry-card bg-white bg-opacity-70 border border-gold border-opacity-20 p-8 text-center flex flex-col">
+
+          <!-- Store Icon / Initial -->
+          <div class="w-16 h-16 rounded-full bg-sage bg-opacity-10 border border-sage border-opacity-30 flex items-center justify-center mx-auto mb-6">
+            <span class="font-serif text-2xl text-sage font-light" style="font-family: 'Playfair Display', serif;">
+              {{ registry.icon }}
+            </span>
+          </div>
+
+          <!-- Store Name -->
+          <h3 class="font-serif text-3xl text-sage mb-3" style="font-family: 'Playfair Display', serif;">
+            {{ registry.name }}
+          </h3>
+
+          <!-- Divider -->
+          <div class="w-12 h-px bg-gold mx-auto mb-4 opacity-60"></div>
+
+          <!-- Description -->
+          <p class="font-sans text-sm text-gray-500 leading-relaxed flex-grow mb-8">
+            {{ registry.description }}
+          </p>
+
+          <!-- Button -->
+          <a [href]="registry.link"
+             class="btn-primary inline-block w-full text-center"
+             style="text-decoration: none;">
+            View Registry
+          </a>
+        </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Note Section -->
+<section class="py-16 bg-white bg-opacity-40">
+  <div class="max-w-2xl mx-auto px-4 text-center fade-in">
+
+    <!-- Botanical decoration -->
+    <div class="flex justify-center mb-6 opacity-30">
+      <svg width="80" height="60" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M40,50 Q50,30 65,20 Q55,40 40,50Z" fill="#5C7A5C"/>
+        <path d="M40,50 Q30,30 15,20 Q25,40 40,50Z" fill="#5C7A5C"/>
+        <path d="M40,55 Q55,35 70,28 Q58,45 40,55Z" fill="#5C7A5C"/>
+        <path d="M40,55 Q25,35 10,28 Q22,45 40,55Z" fill="#5C7A5C"/>
+        <line x1="40" y1="10" x2="40" y2="55" stroke="#5C7A5C" stroke-width="1"/>
+      </svg>
+    </div>
+
+    <p class="font-serif text-2xl text-sage italic mb-4" style="font-family: 'Playfair Display', serif;">
+      A Note of Gratitude
+    </p>
+    <p class="font-sans text-sm text-gray-500 leading-relaxed">
+      We are so grateful for the love and support of our family and friends.<br>
+      Your presence at our wedding is more than enough.
+    </p>
+  </div>
+</section>

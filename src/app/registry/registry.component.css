@@ -1,0 +1,8 @@
+.registry-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.registry-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(92, 122, 92, 0.12);
+}

@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F5F0E8;
+  font-family: 'Raleway', sans-serif;
+  color: #3a3a3a;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-sage text-cream px-8 py-3 tracking-widest text-sm uppercase font-sans hover:bg-opacity-90 transition-all;
+  }
+  .section-title {
+    @apply font-script text-5xl text-sage mb-2;
+  }
+  .divider {
+    @apply flex items-center gap-4 my-6;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    @apply flex-1 h-px bg-gold opacity-50;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(20px);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

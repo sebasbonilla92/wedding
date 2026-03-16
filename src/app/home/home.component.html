@@ -1,0 +1,104 @@
+<!-- Hero Section -->
+<section class="min-h-screen bg-cream flex flex-col items-center justify-center px-4 py-16 relative overflow-hidden">
+  <!-- Background image -->
+  <div class="absolute inset-0 z-0" style="background-image: url('assets/proposal.jpeg'); background-size: cover; background-position: center; filter: grayscale(50%); opacity: 0.08;"></div>
+
+  <!-- Gold border frame -->
+  <div class="border border-gold border-opacity-40 p-8 md:p-16 max-w-2xl w-full text-center hero-content">
+    <!-- Gold divider -->
+    <div class="flex items-center gap-4 mb-6">
+      <div class="flex-1 h-px bg-gold opacity-50"></div>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 2L11.5 7H17L12.5 10.5L14 15.5L10 12L6 15.5L7.5 10.5L3 7H8.5L10 2Z" fill="#C9A84C" opacity="0.7"/>
+      </svg>
+      <div class="flex-1 h-px bg-gold opacity-50"></div>
+    </div>
+
+    <!-- Invitation text -->
+    <p class="font-serif text-lg tracking-widest uppercase text-gray-500 mb-8" style="font-family: 'Playfair Display', serif; letter-spacing: 0.15em;">
+      You Are Invited To The Wedding Of
+    </p>
+
+    <!-- Names -->
+    <div class="mb-4">
+      <span class="font-script text-7xl md:text-8xl text-sage block leading-none" style="font-family: 'Great Vibes', cursive;">Sebastian</span>
+    </div>
+
+    <div class="flex items-center gap-4 my-2">
+      <div class="flex-1 h-px bg-gold opacity-30"></div>
+      <span class="text-sage text-3xl font-serif" style="font-family: 'Playfair Display', serif;">&amp;</span>
+      <div class="flex-1 h-px bg-gold opacity-30"></div>
+    </div>
+
+    <div class="mt-4 mb-10">
+      <span class="font-script text-7xl md:text-8xl text-sage block leading-none" style="font-family: 'Great Vibes', cursive;">Gabriella</span>
+    </div>
+
+    <!-- Gold divider -->
+    <div class="flex items-center gap-4 mb-8">
+      <div class="flex-1 h-px bg-gold opacity-50"></div>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 2L11.5 7H17L12.5 10.5L14 15.5L10 12L6 15.5L7.5 10.5L3 7H8.5L10 2Z" fill="#C9A84C" opacity="0.7"/>
+      </svg>
+      <div class="flex-1 h-px bg-gold opacity-50"></div>
+    </div>
+
+    <!-- Date -->
+    <p class="tracking-widest uppercase text-sm font-sans text-gray-600" style="letter-spacing: 0.2em;">
+      September 5, 2026 &nbsp;·&nbsp; 4:00 PM
+    </p>
+  </div>
+</section>
+
+<!-- Countdown Section -->
+<section class="py-20 bg-cream">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <div class="fade-in">
+      <h2 class="section-title" style="font-family: 'Great Vibes', cursive;">Counting Down</h2>
+      <div class="divider">
+        <span class="text-gold text-lg">✦</span>
+      </div>
+    </div>
+
+    <div *ngIf="isPast" class="fade-in">
+      <p class="font-serif text-3xl text-sage italic" style="font-family: 'Playfair Display', serif;">
+        The celebration has begun!
+      </p>
+      <p class="font-sans text-gray-500 mt-4 tracking-widest uppercase text-sm">
+        Thank you for being part of our special day
+      </p>
+    </div>
+    <div *ngIf="!isPast" class="fade-in grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-8">
+      <div class="countdown-box bg-white bg-opacity-60 border border-gold border-opacity-30 p-6 flex flex-col items-center">
+        <span class="font-serif text-5xl md:text-6xl text-sage font-light" style="font-family: 'Playfair Display', serif;">
+          {{ timeLeft.days }}
+        </span>
+        <span class="font-sans text-xs tracking-widest uppercase text-gray-500 mt-2">Days</span>
+      </div>
+      <div class="countdown-box bg-white bg-opacity-60 border border-gold border-opacity-30 p-6 flex flex-col items-center">
+        <span class="font-serif text-5xl md:text-6xl text-sage font-light" style="font-family: 'Playfair Display', serif;">
+          {{ timeLeft.hours }}
+        </span>
+        <span class="font-sans text-xs tracking-widest uppercase text-gray-500 mt-2">Hours</span>
+      </div>
+      <div class="countdown-box bg-white bg-opacity-60 border border-gold border-opacity-30 p-6 flex flex-col items-center">
+        <span class="font-serif text-5xl md:text-6xl text-sage font-light" style="font-family: 'Playfair Display', serif;">
+          {{ timeLeft.minutes }}
+        </span>
+        <span class="font-sans text-xs tracking-widest uppercase text-gray-500 mt-2">Minutes</span>
+      </div>
+      <div class="countdown-box bg-white bg-opacity-60 border border-gold border-opacity-30 p-6 flex flex-col items-center">
+        <span class="font-serif text-5xl md:text-6xl text-sage font-light" style="font-family: 'Playfair Display', serif;">
+          {{ timeLeft.seconds }}
+        </span>
+        <span class="font-sans text-xs tracking-widest uppercase text-gray-500 mt-2">Seconds</span>
+      </div>
+    </div>
+
+    <div class="fade-in mt-12">
+      <a href="#rsvp" class="btn-primary inline-block" style="text-decoration: none;">
+        RSVP Now
+      </a>
+    </div>
+  </div>
+</section>

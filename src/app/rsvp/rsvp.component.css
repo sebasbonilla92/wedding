@@ -1,0 +1,10 @@
+input::placeholder,
+textarea::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+select option {
+  background-color: #F5F0E8;
+  color: #3a3a3a;
+}
