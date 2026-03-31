@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { SupabaseService } from '../supabase.service';
 
 @Component({
@@ -10,33 +11,61 @@ import { SupabaseService } from '../supabase.service';
 export class RsvpComponent implements OnInit {
   rsvpForm!: FormGroup;
   isSubmitting = false;
+  isLoading = true;
   submitSuccess = false;
   submitAccepted = false;
   submitError = '';
+  notFound = false;
+  attendanceChosen = false;
 
-  constructor(private fb: FormBuilder, private supabase: SupabaseService) {}
+  guestName = '';
+  guestEmail = '';
+  private guestId = '';
 
-  ngOnInit(): void {
+  constructor(
+    private fb: FormBuilder,
+    private supabase: SupabaseService,
+    private route: ActivatedRoute
+  ) {}
+
+  async ngOnInit(): Promise<void> {
     this.rsvpForm = this.fb.group({
-      fullName: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.email]],
-      attending: ['yes', Validators.required],
-      guestCount: [1, [Validators.min(1), Validators.max(2)]],
+      attending: [null, Validators.required],
+      attendingFriday: [false],
+      attendingSunday: [false],
       dietaryRestrictions: [''],
       message: ['']
     });
 
-    this.rsvpForm.get('attending')?.valueChanges.subscribe(value => {
-      const guestCountControl = this.rsvpForm.get('guestCount');
-      if (value === 'yes') {
-        guestCountControl?.setValidators([Validators.required, Validators.min(1), Validators.max(2)]);
-      } else {
-        guestCountControl?.clearValidators();
-        guestCountControl?.setValue(0);
-      }
-      guestCountControl?.updateValueAndValidity();
-    });
+    const id = this.route.snapshot.paramMap.get('id');
+    if (!id) {
+      this.notFound = true;
+      this.isLoading = false;
+      return;
+    }
 
+    this.guestId = id;
+    const { data, error } = await this.supabase.client
+      .from('rsvps')
+      .select('*')
+      .eq('id', id)
+      .single();
+
+    if (error || !data) {
+      this.notFound = true;
+      this.isLoading = false;
+      return;
+    }
+
+    this.guestName = data.full_name;
+    this.guestEmail = data.email;
+
+    if (data.attending_saturday !== null && data.attending_saturday !== undefined) {
+      this.submitAccepted = data.attending_saturday;
+      this.submitSuccess = true;
+    }
+
+    this.isLoading = false;
     this.initIntersectionObserver();
   }
 
@@ -44,9 +73,10 @@ export class RsvpComponent implements OnInit {
     return this.rsvpForm.get('attending')?.value === 'yes';
   }
 
-  get fullName() { return this.rsvpForm.get('fullName'); }
-  get email() { return this.rsvpForm.get('email'); }
-  get attending() { return this.rsvpForm.get('attending'); }
+  selectAttendance(value: 'yes' | 'no'): void {
+    this.rsvpForm.get('attending')?.setValue(value);
+    this.attendanceChosen = true;
+  }
 
   async onSubmit(): Promise<void> {
     if (this.rsvpForm.invalid) {
@@ -57,24 +87,25 @@ export class RsvpComponent implements OnInit {
     this.isSubmitting = true;
     this.submitError = '';
 
+    const attending = this.rsvpForm.value.attending === 'yes';
+
     const { error } = await this.supabase.client
       .from('rsvps')
-      .insert({
-        full_name: this.rsvpForm.value.fullName,
-        email: this.rsvpForm.value.email,
-        attending: this.rsvpForm.value.attending === 'yes',
-        guest_count: this.rsvpForm.value.attending === 'yes' ? this.rsvpForm.value.guestCount : 0,
-        dietary_restrictions: this.rsvpForm.value.dietaryRestrictions || null,
+      .update({
+        attending_saturday: attending,
+        attending_friday: attending ? this.rsvpForm.value.attendingFriday : false,
+        attending_sunday: attending ? this.rsvpForm.value.attendingSunday : false,
+        dietary_restrictions: attending ? (this.rsvpForm.value.dietaryRestrictions?.trim() || null) : null,
         message: this.rsvpForm.value.message || null
-      });
+      })
+      .eq('id', this.guestId);
 
     if (error) {
-      this.submitError = `We encountered an issue submitting your RSVP. Please try again or contact us directly. (${error.message})`;
-      console.error('RSVP submission error:', error);
+      this.submitError = `Something went wrong. Please try again or contact us directly. (${error.message})`;
+      console.error('RSVP error:', error);
     } else {
-      this.submitAccepted = this.rsvpForm.value.attending === 'yes';
+      this.submitAccepted = attending;
       this.submitSuccess = true;
-      this.rsvpForm.reset();
     }
 
     this.isSubmitting = false;

@@ -13,11 +13,11 @@ export class DetailsComponent implements OnInit {
       label: 'Friday',
       date: 'Sep 4',
       title: 'Welcome Party',
-      venue: 'Cannario',
+      venue: 'Cannario Rooftop',
       description: 'Kick off the weekend with drinks, music, and great company.',
       events: [
-        { time: '7:00 PM', event: 'Doors Open', description: 'Arrive, settle in, and mingle' },
-        { time: '8:00 PM', event: 'Welcome Party', description: 'Celebrate the start of the weekend with us at Cannario' },
+        { time: '4:00 PM', event: 'Doors Open', description: 'Arrive, settle in, and mingle' },
+        { time: '8:00 PM', event: 'Welcome Party', description: 'Celebrate the start of the weekend with us at Cannario Rooftop' },
       ]
     },
     {
@@ -29,7 +29,7 @@ export class DetailsComponent implements OnInit {
       events: [
         { time: '3:30 PM', event: 'Guests Arrive', description: 'Please arrive and find your seats' },
         { time: '4:00 PM', event: 'Ceremony Begins', description: 'Join us as we exchange our vows' },
-        { time: '4:45 PM', event: 'Cocktail Hour', description: 'Celebrate with drinks and hors d\'oeuvres' },
+        { time: '5:00 PM', event: 'Cocktail Hour', description: 'Celebrate with drinks and hors d\'oeuvres' },
         { time: '6:00 PM', event: 'Reception & Dinner', description: 'Dinner and dancing with the newlyweds' },
       ]
     },

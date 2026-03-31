@@ -1,7 +1,15 @@
+<!-- Back link -->
+<div class="bg-cream px-6 pt-6">
+  <a routerLink="/" class="font-sans text-xs tracking-widest uppercase text-sage hover:text-gold transition-colors" style="letter-spacing: 0.12em;">
+    ← Back to Home
+  </a>
+</div>
+
 <!-- Page Header -->
 <section class="py-20 bg-cream text-center px-4">
   <div class="fade-in">
-    <h1 class="section-title" style="font-family: 'Great Vibes', cursive;">RSVP</h1>
+    <!-- <h1 class="font-script text-3xl text-sage mb-2" style="font-family: 'Great Vibes', cursive;">RSVP</h1> -->
+    <h1 class="font-serif text-3xl text-sage mb-2">RSVP</h1>
     <div class="divider max-w-xs mx-auto">
       <span class="text-gold text-lg">✦</span>
     </div>
@@ -15,40 +23,66 @@
 <section class="pb-24 bg-cream">
   <div class="max-w-xl mx-auto px-4">
 
-    <!-- Success Message -->
-    <div *ngIf="submitSuccess" class="text-center py-16 border border-gold border-opacity-30 bg-white bg-opacity-60 px-8">
-      <div class="flex justify-center mb-6 opacity-40">
-        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M30,50 Q40,30 55,20 Q45,40 30,50Z" fill="#5C7A5C"/>
-          <path d="M30,50 Q20,30 5,20 Q15,40 30,50Z" fill="#5C7A5C"/>
-        </svg>
+    <!-- Loading -->
+    <div *ngIf="isLoading" class="text-center py-16">
+      <p class="font-sans text-sm text-gray-400 tracking-widest uppercase" style="letter-spacing: 0.12em;">Loading...</p>
+    </div>
+
+    <!-- Not Found -->
+    <div *ngIf="!isLoading && notFound" class="text-center py-16 border border-gold border-opacity-30 bg-white bg-opacity-60 px-8">
+      <h2 class="font-script text-4xl text-sage mb-4" style="font-family: 'Great Vibes', cursive;">Invitation Not Found</h2>
+      <p class="font-serif text-gray-500 italic" style="font-family: 'Playfair Display', serif;">
+        This link doesn't seem to be valid. Please check your invitation or contact us directly.
+      </p>
+    </div>
+
+    <!-- Success Screen -->
+    <div *ngIf="!isLoading && !notFound && submitSuccess"
+         class="text-center py-16 border border-gold border-opacity-30 bg-white bg-opacity-60 px-8">
+
+      <!-- Checkmark -->
+      <div class="flex justify-center mb-6">
+        <div class="w-16 h-16 rounded-full border border-gold border-opacity-50 flex items-center justify-center">
+          <svg class="w-7 h-7 text-sage" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 13l4 4L19 7" stroke="#5C7A5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
       </div>
 
       <ng-container *ngIf="submitAccepted">
-        <h2 class="font-script text-5xl text-sage mb-4" style="font-family: 'Great Vibes', cursive;">We'll see you there!</h2>
-        <p class="font-serif text-xl text-gray-600 italic" style="font-family: 'Playfair Display', serif;">
-          Thank you for accepting. We can't wait to celebrate with you.
+        <h2 class="font-script text-5xl text-sage mb-4" style="font-family: 'Great Vibes', cursive;">You're on the list!</h2>
+        <p class="font-serif text-xl text-gray-600 italic mb-4" style="font-family: 'Playfair Display', serif;">
+          We can't wait to celebrate with you, {{ guestName }}.
         </p>
         <div class="w-16 h-px bg-gold mx-auto my-6 opacity-60"></div>
-        <p class="font-sans text-sm text-gray-500">
-          Your RSVP has been received. We'll be in touch with more details soon.
+        <p class="font-sans text-sm text-gray-400">
+          September 5, 2026 · Le Pinot, Envigado
         </p>
       </ng-container>
 
       <ng-container *ngIf="!submitAccepted">
-        <h2 class="font-script text-5xl text-sage mb-4" style="font-family: 'Great Vibes', cursive;">Thank You</h2>
-        <p class="font-serif text-xl text-gray-600 italic" style="font-family: 'Playfair Display', serif;">
-          We're sorry you won't be able to make it.
+        <h2 class="font-script text-5xl text-sage mb-4" style="font-family: 'Great Vibes', cursive;">We'll miss you</h2>
+        <p class="font-serif text-xl text-gray-600 italic mb-4" style="font-family: 'Playfair Display', serif;">
+          Thank you for letting us know, {{ guestName }}.
         </p>
         <div class="w-16 h-px bg-gold mx-auto my-6 opacity-60"></div>
-        <p class="font-sans text-sm text-gray-500">
-          Your response has been received. You'll be in our hearts on that special day.
+        <p class="font-sans text-sm text-gray-400">
+          You'll be in our hearts on that special day.
         </p>
       </ng-container>
     </div>
 
     <!-- RSVP Form -->
-    <div *ngIf="!submitSuccess" class="fade-in bg-white bg-opacity-60 border border-gold border-opacity-20 p-8 md:p-12">
+    <div *ngIf="!isLoading && !notFound && !submitSuccess"
+         class="fade-in bg-white bg-opacity-60 border border-gold border-opacity-20 p-8 md:p-12">
+
+      <!-- Guest greeting -->
+      <div class="text-center mb-8">
+        <p class="font-script text-5xl text-sage" style="font-family: 'Great Vibes', cursive;">{{ guestName }}</p>
+        <p class="font-sans text-xs text-gray-400 mt-1">{{ guestEmail }}</p>
+      </div>
+
+      <div class="w-16 h-px bg-gold mx-auto mb-8 opacity-40"></div>
 
       <div *ngIf="submitError" class="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 text-sm font-sans">
         {{ submitError }}
@@ -56,128 +90,147 @@
 
       <form [formGroup]="rsvpForm" (ngSubmit)="onSubmit()" novalidate>
 
-        <!-- Full Name -->
-        <div class="mb-6">
-          <label class="block font-sans text-xs tracking-widest uppercase text-gray-500 mb-2" style="letter-spacing: 0.15em;">
-            Full Name <span class="text-sage">*</span>
-          </label>
-          <input
-            type="text"
-            formControlName="fullName"
-            class="w-full border-b border-gold border-opacity-40 bg-transparent py-2 px-0 font-serif text-lg text-gray-700 focus:outline-none focus:border-sage focus:border-opacity-60 transition-colors"
-            style="font-family: 'Playfair Display', serif;"
-            placeholder="Your full name"
-          >
-          <p *ngIf="fullName?.invalid && fullName?.touched" class="text-red-500 text-xs mt-1 font-sans">
-            Please enter your full name.
+        <!-- Attendance Cards -->
+        <div class="mb-8">
+          <p class="text-center font-sans text-xs text-gray-400 mb-4" style="letter-spacing: 0.1em;">
+            Will you be joining us?
           </p>
-        </div>
+          <div class="grid grid-cols-2 gap-4">
 
-        <!-- Email -->
-        <div class="mb-6">
-          <label class="block font-sans text-xs tracking-widest uppercase text-gray-500 mb-2" style="letter-spacing: 0.15em;">
-            Email Address <span class="text-sage">*</span>
-          </label>
-          <input
-            type="email"
-            formControlName="email"
-            class="w-full border-b border-gold border-opacity-40 bg-transparent py-2 px-0 font-serif text-lg text-gray-700 focus:outline-none focus:border-sage focus:border-opacity-60 transition-colors"
-            style="font-family: 'Playfair Display', serif;"
-            placeholder="your@email.com"
-          >
-          <p *ngIf="email?.invalid && email?.touched" class="text-red-500 text-xs mt-1 font-sans">
-            Please enter a valid email address.
-          </p>
-        </div>
+            <!-- Accept card -->
+            <button type="button"
+              (click)="selectAttendance('yes')"
+              class="py-6 px-4 border text-center transition-all cursor-pointer"
+              [ngClass]="rsvpForm.get('attending')?.value === 'yes'
+                ? 'border-sage bg-sage text-cream'
+                : 'border-gold border-opacity-30 bg-transparent text-gray-600 hover:border-sage hover:text-sage'">
+              <span class="block text-2xl mb-1">🥂</span>
+              <span class="font-serif text-lg" style="font-family: 'Playfair Display', serif;">Joyfully Accepts</span>
+            </button>
 
-        <!-- Attending -->
-        <div class="mb-6">
-          <label class="block font-sans text-xs tracking-widest uppercase text-gray-500 mb-3" style="letter-spacing: 0.15em;">
-            Will you be attending? <span class="text-sage">*</span>
-          </label>
-          <div class="flex gap-8">
-            <label class="flex items-center gap-3 cursor-pointer group">
-              <input type="radio" formControlName="attending" value="yes" class="sr-only">
-              <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors"
-                   [class.border-sage]="rsvpForm.get('attending')?.value === 'yes'"
-                   [class.border-gray-300]="rsvpForm.get('attending')?.value !== 'yes'">
-                <div *ngIf="rsvpForm.get('attending')?.value === 'yes'" class="w-2.5 h-2.5 rounded-full bg-sage"></div>
-              </div>
-              <span class="font-serif text-lg text-gray-700" style="font-family: 'Playfair Display', serif;">
-                Accept
-              </span>
-            </label>
+            <!-- Decline card -->
+            <button type="button"
+              (click)="selectAttendance('no')"
+              class="py-6 px-4 border text-center transition-all cursor-pointer"
+              [ngClass]="rsvpForm.get('attending')?.value === 'no'
+                ? 'border-gray-400 bg-gray-100 text-gray-600'
+                : 'border-gold border-opacity-30 bg-transparent text-gray-600 hover:border-gray-400 hover:text-gray-500'">
+              <span class="block text-2xl mb-1">💌</span>
+              <span class="font-serif text-lg" style="font-family: 'Playfair Display', serif;">Regretfully Declines</span>
+            </button>
 
-            <label class="flex items-center gap-3 cursor-pointer group">
-              <input type="radio" formControlName="attending" value="no" class="sr-only">
-              <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors"
-                   [class.border-sage]="rsvpForm.get('attending')?.value === 'no'"
-                   [class.border-gray-300]="rsvpForm.get('attending')?.value !== 'no'">
-                <div *ngIf="rsvpForm.get('attending')?.value === 'no'" class="w-2.5 h-2.5 rounded-full bg-sage"></div>
-              </div>
-              <span class="font-serif text-lg text-gray-700" style="font-family: 'Playfair Display', serif;">
-                Decline
-              </span>
-            </label>
           </div>
         </div>
 
-        <!-- Number of Guests (conditional) -->
-        <div *ngIf="isAttending" class="mb-6">
-          <label class="block font-sans text-xs tracking-widest uppercase text-gray-500 mb-2" style="letter-spacing: 0.15em;">
-            Number of Guests (including yourself)
-          </label>
-          <select
-            formControlName="guestCount"
-            class="w-full border-b border-gold border-opacity-40 bg-transparent py-2 px-0 font-serif text-lg text-gray-700 focus:outline-none focus:border-sage focus:border-opacity-60 transition-colors appearance-none cursor-pointer"
-            style="font-family: 'Playfair Display', serif;">
-            <option value="1">1 Guest</option>
-            <option value="2">2 Guests</option>
-          </select>
-        </div>
+        <!-- Progressive disclosure — only shown after a choice is made -->
+        <ng-container *ngIf="attendanceChosen">
 
-        <!-- Dietary Restrictions -->
-        <div *ngIf="isAttending" class="mb-6">
-          <label class="block font-sans text-xs tracking-widest uppercase text-gray-500 mb-2" style="letter-spacing: 0.15em;">
-            Dietary Restrictions <span class="text-gray-400 normal-case tracking-normal text-xs">(optional)</span>
-          </label>
-          <textarea
-            formControlName="dietaryRestrictions"
-            rows="3"
-            class="w-full border border-gold border-opacity-30 bg-transparent py-2 px-3 font-serif text-base text-gray-700 focus:outline-none focus:border-sage focus:border-opacity-60 transition-colors resize-none"
-            style="font-family: 'Playfair Display', serif;"
-            placeholder="Please list any dietary restrictions or allergies..."
-          ></textarea>
-        </div>
+          <!-- Accepting flow -->
+          <ng-container *ngIf="isAttending">
 
-        <!-- Message -->
-        <div class="mb-8">
-          <label class="block font-sans text-xs tracking-widest uppercase text-gray-500 mb-2" style="letter-spacing: 0.15em;">
-            Message for the Couple <span class="text-gray-400 normal-case tracking-normal text-xs">(optional)</span>
-          </label>
-          <textarea
-            formControlName="message"
-            rows="4"
-            class="w-full border border-gold border-opacity-30 bg-transparent py-2 px-3 font-serif text-base text-gray-700 focus:outline-none focus:border-sage focus:border-opacity-60 transition-colors resize-none"
-            style="font-family: 'Playfair Display', serif;"
-            placeholder="Share your wishes for the couple..."
-          ></textarea>
-        </div>
+            <!-- Events -->
+            <div class="mb-8">
+              <p class="font-sans text-xs text-gray-400 mb-4 text-center" style="letter-spacing: 0.08em;">
+                Which events will you be attending?
+              </p>
 
-        <!-- Submit Button -->
-        <div class="text-center">
-          <button
-            type="submit"
-            [disabled]="isSubmitting"
-            class="btn-primary w-full md:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <span *ngIf="isSubmitting">Sending...</span>
-            <span *ngIf="!isSubmitting">Send RSVP</span>
-          </button>
-        </div>
+              <!-- Friday -->
+              <label class="flex items-start gap-4 p-4 border border-gold border-opacity-20 mb-3 cursor-pointer hover:border-gold hover:border-opacity-40 transition-colors">
+                <input type="checkbox" formControlName="attendingFriday" class="sr-only">
+                <div class="w-5 h-5 mt-0.5 border-2 flex items-center justify-center flex-shrink-0 transition-colors"
+                     [ngClass]="rsvpForm.get('attendingFriday')?.value ? 'border-sage bg-sage' : 'border-gold border-opacity-40'">
+                  <svg *ngIf="rsvpForm.get('attendingFriday')?.value" class="w-3 h-3" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 6l3 3 5-5" stroke="#F5F0E8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-serif text-base text-gray-700" style="font-family: 'Playfair Display', serif;">Friday, Sep 4 — Welcome Party</p>
+                  <p class="font-sans text-xs text-gray-400 mt-0.5">Cannario Rooftop · 7:00 PM</p>
+                </div>
+              </label>
 
+              <!-- Saturday — locked -->
+              <div class="flex items-start gap-4 p-4 border border-sage bg-sage bg-opacity-5 mb-3">
+                <div class="w-5 h-5 mt-0.5 border-2 border-sage bg-sage flex items-center justify-center flex-shrink-0">
+                  <svg class="w-3 h-3" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#F5F0E8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <p class="font-serif text-base text-sage" style="font-family: 'Playfair Display', serif;">Saturday, Sep 5 — The Wedding</p>
+                  <p class="font-sans text-xs text-gray-400 mt-0.5">Le Pinot, Envigado · 4:00 PM</p>
+                </div>
+              </div>
+
+              <!-- Sunday -->
+              <label class="flex items-start gap-4 p-4 border border-gold border-opacity-20 cursor-pointer hover:border-gold hover:border-opacity-40 transition-colors">
+                <input type="checkbox" formControlName="attendingSunday" class="sr-only">
+                <div class="w-5 h-5 mt-0.5 border-2 flex items-center justify-center flex-shrink-0 transition-colors"
+                     [ngClass]="rsvpForm.get('attendingSunday')?.value ? 'border-sage bg-sage' : 'border-gold border-opacity-40'">
+                  <svg *ngIf="rsvpForm.get('attendingSunday')?.value" class="w-3 h-3" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 6l3 3 5-5" stroke="#F5F0E8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-serif text-base text-gray-700" style="font-family: 'Playfair Display', serif;">Sunday, Sep 6 — Chiva Party</p>
+                  <p class="font-sans text-xs text-gray-400 mt-0.5">Around Antioquia · Time TBD</p>
+                </div>
+              </label>
+            </div>
+
+            <!-- Dietary Restrictions -->
+            <div class="mb-6">
+              <p class="font-sans text-xs text-gray-400 mb-2 text-center" style="letter-spacing: 0.08em;">
+                Any dietary restrictions? <span class="text-gray-300">(optional)</span>
+              </p>
+              <textarea
+                formControlName="dietaryRestrictions"
+                rows="2"
+                class="w-full border border-gold border-opacity-20 bg-transparent py-2 px-3 font-sans text-sm text-gray-600 focus:outline-none focus:border-sage focus:border-opacity-50 transition-colors resize-none"
+                placeholder="e.g. vegetarian, nut allergy..."></textarea>
+            </div>
+
+            <!-- Message -->
+            <div class="mb-8">
+              <p class="font-sans text-xs text-gray-400 mb-2 text-center" style="letter-spacing: 0.08em;">
+                A message for the couple <span class="text-gray-300">(optional)</span>
+              </p>
+              <textarea
+                formControlName="message"
+                rows="3"
+                class="w-full border border-gold border-opacity-20 bg-transparent py-2 px-3 font-sans text-sm text-gray-600 focus:outline-none focus:border-sage focus:border-opacity-50 transition-colors resize-none"
+                style="font-family: 'Playfair Display', serif;"
+                placeholder="Share your wishes..."></textarea>
+            </div>
+
+          </ng-container>
+
+          <!-- Declining flow -->
+          <ng-container *ngIf="!isAttending">
+            <div class="text-center mb-8 pt-6 border border-gold border-opacity-20">
+              <p class="font-serif text-base text-gray-500 italic" style="font-family: 'Playfair Display', serif;">
+                We're sad to miss you, but we understand.<br>
+                <span class="text-sm text-gray-400 not-italic font-sans">Feel free to leave a note if you'd like.</span>
+              </p>
+              <textarea
+                formControlName="message"
+                rows="3"
+                class="mt-4 w-full border border-gold border-opacity-20 bg-transparent py-2 px-3 font-sans text-sm text-gray-600 focus:outline-none focus:border-sage focus:border-opacity-50 transition-colors resize-none"
+                placeholder="Leave a message (optional)..."></textarea>
+            </div>
+          </ng-container>
+
+          <!-- Submit Button -->
+          <div class="text-center">
+            <button
+              type="submit"
+              [disabled]="isSubmitting"
+              class="w-full border border-gold text-sage font-sans text-sm tracking-widest uppercase py-5 px-8 hover:bg-sage hover:text-cream hover:border-sage transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+              style="letter-spacing: 0.15em;">
+              <span *ngIf="isSubmitting">Sending...</span>
+              <span *ngIf="!isSubmitting">Confirm RSVP</span>
+            </button>
+          </div>
+        </ng-container>
       </form>
     </div>
-
   </div>
 </section>
