@@ -12,6 +12,7 @@ import { DetailsComponent } from './details/details.component';
 import { RsvpComponent } from './rsvp/rsvp.component';
 import { StayComponent } from './stay/stay.component';
 import { ExploreComponent } from './explore/explore.component';
+import { GoodToKnowComponent } from './good-to-know/good-to-know.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ExploreComponent } from './explore/explore.component';
     RsvpComponent,
     StayComponent,
     ExploreComponent,
+    GoodToKnowComponent,
   ],
   imports: [
     BrowserModule,

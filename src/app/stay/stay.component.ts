@@ -16,11 +16,6 @@ export class StayComponent implements OnInit {
       tag: 'Most popular for visitors',
       description: 'The most visited neighborhood in Medellín. Great restaurants, nightlife, and hotel options. About 10 minutes from the venue by car.',
     },
-    {
-      name: 'Laureles',
-      tag: 'Local favorite',
-      description: 'A charming, tree-lined neighborhood loved by locals. Relaxed vibe, excellent cafés, and great value. Around 20 minutes from the venue.',
-    },
   ];
 
   ngOnInit(): void {
