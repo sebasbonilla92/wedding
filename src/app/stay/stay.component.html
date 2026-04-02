@@ -16,7 +16,7 @@
   <div class="max-w-3xl mx-auto px-4">
 
     <!-- Tab toggle — top right -->
-    <!-- <div class="flex justify-end mb-8">
+    <div class="flex justify-end mb-8">
       <div class="flex border border-gold border-opacity-30">
         <button
           (click)="setTab('hotels')"
@@ -33,7 +33,7 @@
           Airbnb
         </button>
       </div>
-    </div> -->
+    </div>
 
     <!-- Hotels -->
     <div *ngIf="activeTab === 'hotels'" class="space-y-4">
@@ -62,7 +62,7 @@
     </div>
 
     <!-- Airbnb -->
-    <!-- <div *ngIf="activeTab === 'airbnb'" class="space-y-4">
+    <div *ngIf="activeTab === 'airbnb'" class="space-y-4">
       <p class="font-sans text-sm text-gray-400 text-center mb-6">
         We recommend searching for Sep 4–7. These are some examples of what's available.
       </p>
@@ -93,7 +93,7 @@
           Browse all on Airbnb
         </a>
       </div>
-    </div> -->
+    </div>
 
   </div>
 </section>

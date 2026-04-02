@@ -63,15 +63,6 @@ export class StayComponent implements OnInit {
       link: 'https://www.letterahotel.com/en/',
       instagram: 'https://www.instagram.com/letterahotel/',
     },
-    {
-      name: 'York Luxury Suites',
-      neighborhood: 'Envigado — Near the venue',
-      address: 'Carrera 43A #17 Sur 63, Medellín',
-      description: 'Suite-style rooms, some with kitchenettes. Located in Envigado, very close to El Poblado and the wedding venue.',
-      ideal: 'Longer stays, families, home-away-from-home comfort',
-      link: 'https://www.yorkluxurysuites.com/',
-      instagram: 'https://www.instagram.com/yorkluxurysuites/',
-    },
   ];
 
   airbnbs = [
