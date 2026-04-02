@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 
 interface TimeLeft {
   days: number;
@@ -15,7 +15,13 @@ interface TimeLeft {
 export class HomeComponent implements OnInit, OnDestroy {
   timeLeft: TimeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
   isPast = false;
+  scrolled = false;
   private intervalId: ReturnType<typeof setInterval> | null = null;
+
+  @HostListener('window:scroll')
+  onScroll(): void {
+    this.scrolled = window.scrollY > window.innerHeight * 0.85;
+  }
 
   private targetDate = new Date('2026-09-05T16:00:00');
 

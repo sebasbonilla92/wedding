@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-stay',
   templateUrl: './stay.component.html',
-  styles: [`.instagram-btn { color: oklch(80.8% 0.114 19.571); } .instagram-btn:hover { background-color: oklch(80.8% 0.114 19.571); color: oklch(22% 0.1 19.571); }`],
+  styles: [`.instagram-btn { color: oklch(22% 0.1 19.571); } .instagram-btn:hover { background-color: oklch(72% 0.12 19.571); }`],
 })
 export class StayComponent implements OnInit {
   activeTab: 'hotels' | 'airbnb' = 'hotels';
