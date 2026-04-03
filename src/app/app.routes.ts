@@ -4,6 +4,7 @@ import { StayComponent } from './stay/stay.component';
 import { ExploreComponent } from './explore/explore.component';
 import { RsvpComponent } from './rsvp/rsvp.component';
 import { GoodToKnowComponent } from './good-to-know/good-to-know.component';
+import { GettingThereComponent } from './getting-there/getting-there.component';
 
 export const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -11,5 +12,6 @@ export const routes: Routes = [
   { path: 'stay', component: StayComponent },
   { path: 'explore', component: ExploreComponent },
   { path: 'faq', component: GoodToKnowComponent },
+  { path: 'getting-there', component: GettingThereComponent },
   { path: '**', redirectTo: '' }
 ];

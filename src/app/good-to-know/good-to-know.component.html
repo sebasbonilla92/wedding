@@ -1,37 +1,45 @@
 <!-- Header -->
-<section class="py-20 bg-cream text-center px-4">
-  <div class="fade-in">
-    <h1 class="font-serif text-5xl text-sage mb-2" style="font-family: 'Playfair Display', serif;">FAQ</h1>
+<section class="pt-20 pb-10 bg-cream text-center px-4">
+  <div class="fade-in text-center">
+    <h1 class="font-serif text-5xl text-sage mb-2 text-center" style="font-family: 'Playfair Display', serif;">FAQ</h1>
     <div class="divider max-w-xs mx-auto">
       <span class="text-gold text-lg">✦</span>
     </div>
-    <p class="font-serif text-lg text-gray-500 italic max-w-md mx-auto" style="font-family: 'Playfair Display', serif;">
+    <p class="font-serif text-lg text-gray-500 italic max-w-md mx-auto text-center" style="font-family: 'Playfair Display', serif;">
       A few things to help you prepare for your trip to Medellín.
     </p>
   </div>
 </section>
 
-<!-- Tips -->
+<!-- FAQ Accordion -->
 <section class="pb-24 bg-cream">
   <div class="max-w-3xl mx-auto px-4">
 
-    <div class="fade-in grid md:grid-cols-3 gap-6">
-
-      <div class="border border-gold border-opacity-20 bg-white bg-opacity-50 p-6">
-        <p class="font-sans text-xs tracking-widest uppercase text-gold mb-3" style="letter-spacing: 0.1em;">Weather</p>
-        <p class="font-sans text-sm text-gray-500 leading-relaxed">September is the rainy season — warm (22–27°C) with afternoon showers. Bring a light layer.</p>
+    <div class="fade-in text-center mb-10">
+      <div class="flex items-center gap-4 max-w-xs mx-auto">
+        <div class="flex-1 h-px bg-gold opacity-30"></div>
+        <span class="text-gold opacity-60 text-sm">✦</span>
+        <div class="flex-1 h-px bg-gold opacity-30"></div>
       </div>
-
-      <div class="border border-gold border-opacity-20 bg-white bg-opacity-50 p-6">
-        <p class="font-sans text-xs tracking-widest uppercase text-gold mb-3" style="letter-spacing: 0.1em;">Getting Around</p>
-        <p class="font-sans text-sm text-gray-500 leading-relaxed">Uber and InDrive work well. The Metro is great for sightseeing. Avoid taxis off the street.</p>
-      </div>
-
-      <div class="border border-gold border-opacity-20 bg-white bg-opacity-50 p-6">
-        <p class="font-sans text-xs tracking-widest uppercase text-gold mb-3" style="letter-spacing: 0.1em;">Currency</p>
-        <p class="font-sans text-sm text-gray-500 leading-relaxed">Colombian Peso (COP). ATMs are widely available. Cards accepted at most restaurants.</p>
-      </div>
-
     </div>
+
+    <div class="fade-in space-y-2">
+      <div *ngFor="let faq of faqs; let i = index"
+           class="border border-gold border-opacity-20 bg-white bg-opacity-50">
+        <button
+          (click)="toggle(i)"
+          class="w-full flex items-center justify-between px-6 py-5 text-left">
+          <span class="font-serif text-base text-sage pr-4" style="font-family: 'Playfair Display', serif;">{{ faq.q }}</span>
+          <span class="text-gold opacity-60 flex-shrink-0 text-lg leading-none">{{ openIndex === i ? '−' : '+' }}</span>
+        </button>
+        <div *ngIf="openIndex === i" class="px-6 pb-5">
+          <p class="font-sans text-sm text-gray-500 leading-relaxed">
+            {{ faq.a }}<a *ngIf="faq.linkRoute" [routerLink]="faq.linkRoute" [fragment]="faq.linkFragment"
+               class="text-sage underline hover:opacity-70 transition-opacity">{{ faq.linkText }}</a>{{ faq.aAfter }}
+          </p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>

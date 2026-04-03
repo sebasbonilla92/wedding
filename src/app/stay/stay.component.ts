@@ -55,6 +55,15 @@ export class StayComponent implements OnInit {
       instagram: 'https://www.instagram.com/binnhotel/',
     },
     {
+      name: 'Café Hotel',
+      neighborhood: 'El Poblado',
+      address: 'El Poblado, Medellín',
+      description: 'A charming boutique hotel with a warm, coffee-inspired atmosphere. Intimate, well-designed spaces in the heart of El Poblado.',
+      ideal: 'Guests looking for a cozy, boutique experience',
+      link: 'https://cafehotel.com.co/',
+      instagram: 'https://www.instagram.com/cafehotelmedellin/',
+    },
+    {
       name: 'Lettera Hotel',
       neighborhood: 'El Poblado — Residential',
       address: 'Calle 5F #30-73, El Poblado',

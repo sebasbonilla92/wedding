@@ -21,6 +21,9 @@
           {{ cat.label }}
         </h2>
         <div class="w-12 h-px bg-gold mx-auto mt-3 opacity-60"></div>
+        <p *ngIf="cat.label === 'Eat & Drink'" class="font-sans text-xs text-gray-400 italic mt-3">
+          Most of these spots are highly rated and book up fast — we recommend making reservations in advance, typically via WhatsApp.
+        </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-4">
