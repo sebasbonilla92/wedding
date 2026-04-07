@@ -9,6 +9,7 @@ interface Guest {
   attending_sunday: boolean | null;
   dietary_restrictions: string | null;
   message: string | null;
+  invite_sent: boolean | null;
 }
 
 @Component({
@@ -40,7 +41,7 @@ export class AdminComponent {
     this.loading = true;
     const { data } = await this.supabase.client
       .from('rsvps')
-      .select('id, full_name, attending_saturday, attending_friday, attending_sunday, dietary_restrictions, message')
+      .select('id, full_name, attending_saturday, attending_friday, attending_sunday, dietary_restrictions, message, invite_sent')
       .order('full_name');
     this.guests = data || [];
     this.loading = false;
@@ -67,6 +68,15 @@ export class AdminComponent {
   }
 
   copiedId: number | null = null;
+
+  async toggleInviteSent(guest: Guest): Promise<void> {
+    const newValue = !guest.invite_sent;
+    await this.supabase.client
+      .from('rsvps')
+      .update({ invite_sent: newValue })
+      .eq('id', guest.id);
+    guest.invite_sent = newValue;
+  }
 
   copyLink(id: number): void {
     const url = `${window.location.origin}/rsvp/${id}`;
