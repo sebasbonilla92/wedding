@@ -65,4 +65,13 @@ export class AdminComponent {
   get sundayCount(): number {
     return this.guests.filter(g => g.attending_sunday === true).length;
   }
+
+  copiedId: number | null = null;
+
+  copyLink(id: number): void {
+    const url = `${window.location.origin}/rsvp/${id}`;
+    navigator.clipboard.writeText(url);
+    this.copiedId = id;
+    setTimeout(() => this.copiedId = null, 2000);
+  }
 }
