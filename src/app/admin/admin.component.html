@@ -1,0 +1,107 @@
+<!-- Password Gate -->
+<div *ngIf="!unlocked" class="min-h-screen bg-cream flex items-center justify-center px-4">
+  <div class="w-full max-w-sm border border-gold border-opacity-30 bg-white bg-opacity-60 p-10 text-center">
+    <p class="font-sans text-xs tracking-widest uppercase text-gold mb-6" style="letter-spacing: 0.15em;">Admin Access</p>
+    <h1 class="font-serif text-3xl text-sage mb-8" style="font-family: 'Playfair Display', serif;">Gabriella &amp; Sebastian</h1>
+    <input
+      [(ngModel)]="passwordInput"
+      type="password"
+      placeholder="Password"
+      (keydown.enter)="unlock()"
+      class="w-full border border-gold border-opacity-40 bg-transparent px-4 py-3 font-sans text-sm text-gray-600 text-center tracking-widest outline-none focus:border-sage transition-colors mb-3"
+      [class.border-red-300]="wrongPassword" />
+    <p *ngIf="wrongPassword" class="font-sans text-xs text-red-400 mb-3">Incorrect password</p>
+    <button
+      (click)="unlock()"
+      class="w-full bg-sage text-cream font-sans text-xs tracking-widest uppercase py-3 hover:bg-opacity-85 transition-all"
+      style="letter-spacing: 0.12em;">
+      Enter
+    </button>
+  </div>
+</div>
+
+<!-- Dashboard -->
+<div *ngIf="unlocked" class="min-h-screen bg-cream px-4 py-16">
+  <div class="max-w-4xl mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <p class="font-sans text-xs tracking-widest uppercase text-gold mb-2" style="letter-spacing: 0.15em;">Admin</p>
+      <h1 class="font-serif text-4xl text-sage" style="font-family: 'Playfair Display', serif;">RSVP Responses</h1>
+      <div class="w-12 h-px bg-gold mx-auto mt-4 opacity-60"></div>
+    </div>
+
+    <!-- Loading -->
+    <div *ngIf="loading" class="text-center py-20">
+      <p class="font-sans text-sm text-gray-400 tracking-widest">Loading...</p>
+    </div>
+
+    <div *ngIf="!loading">
+
+      <!-- Summary Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-12">
+        <div class="border border-gold border-opacity-20 bg-white bg-opacity-50 p-4 text-center">
+          <p class="font-serif text-3xl text-sage" style="font-family: 'Playfair Display', serif;">{{ guests.length }}</p>
+          <p class="font-sans text-xs text-gray-400 tracking-widest uppercase mt-1" style="letter-spacing: 0.1em;">Invited</p>
+        </div>
+        <div class="border border-gold border-opacity-20 bg-white bg-opacity-50 p-4 text-center">
+          <p class="font-serif text-3xl text-sage" style="font-family: 'Playfair Display', serif;">{{ attending.length }}</p>
+          <p class="font-sans text-xs text-gray-400 tracking-widest uppercase mt-1" style="letter-spacing: 0.1em;">Attending</p>
+        </div>
+        <div class="border border-gold border-opacity-20 bg-white bg-opacity-50 p-4 text-center">
+          <p class="font-serif text-3xl text-sage" style="font-family: 'Playfair Display', serif;">{{ declined.length }}</p>
+          <p class="font-sans text-xs text-gray-400 tracking-widest uppercase mt-1" style="letter-spacing: 0.1em;">Declined</p>
+        </div>
+        <div class="border border-gold border-opacity-20 bg-white bg-opacity-50 p-4 text-center">
+          <p class="font-serif text-3xl text-sage" style="font-family: 'Playfair Display', serif;">{{ pending.length }}</p>
+          <p class="font-sans text-xs text-gray-400 tracking-widest uppercase mt-1" style="letter-spacing: 0.1em;">Pending</p>
+        </div>
+        <div class="col-span-2 md:col-span-1 border border-gold border-opacity-20 bg-white bg-opacity-50 p-4 text-center">
+          <p class="font-sans text-xs text-gray-400 tracking-widest uppercase mb-2" style="letter-spacing: 0.1em;">Events</p>
+          <p class="font-sans text-xs text-gray-500">Fri: <span class="text-sage font-semibold">{{ fridayCount }}</span></p>
+          <p class="font-sans text-xs text-gray-500">Sun: <span class="text-sage font-semibold">{{ sundayCount }}</span></p>
+        </div>
+      </div>
+
+      <!-- Guest List -->
+      <div class="space-y-3">
+        <div *ngFor="let guest of guests"
+             class="border border-gold border-opacity-20 bg-white bg-opacity-50 p-5">
+          <div class="flex items-start justify-between gap-4 flex-wrap">
+
+            <!-- Name + status -->
+            <div class="flex items-center gap-3 flex-wrap">
+              <h3 class="font-serif text-lg text-sage" style="font-family: 'Playfair Display', serif;">{{ guest.full_name }}</h3>
+              <span *ngIf="guest.attending_saturday === true"
+                    class="font-sans text-xs px-2 py-0.5 bg-sage text-cream tracking-widest uppercase" style="letter-spacing: 0.08em;">Attending</span>
+              <span *ngIf="guest.attending_saturday === false"
+                    class="font-sans text-xs px-2 py-0.5 bg-gray-200 text-gray-500 tracking-widest uppercase" style="letter-spacing: 0.08em;">Declined</span>
+              <span *ngIf="guest.attending_saturday === null"
+                    class="font-sans text-xs px-2 py-0.5 border border-gold border-opacity-40 text-gold tracking-widest uppercase" style="letter-spacing: 0.08em;">Pending</span>
+            </div>
+
+            <!-- Event badges -->
+            <div *ngIf="guest.attending_saturday === true" class="flex gap-2 flex-wrap">
+              <span *ngIf="guest.attending_friday"
+                    class="font-sans text-xs px-2 py-0.5 border border-sage border-opacity-50 text-sage">Fri</span>
+              <span class="font-sans text-xs px-2 py-0.5 border border-sage border-opacity-50 text-sage">Sat</span>
+              <span *ngIf="guest.attending_sunday"
+                    class="font-sans text-xs px-2 py-0.5 border border-sage border-opacity-50 text-sage">Sun</span>
+            </div>
+          </div>
+
+          <!-- Notes -->
+          <div *ngIf="guest.dietary_restrictions || guest.message" class="mt-3 pt-3 border-t border-gold border-opacity-10 space-y-1">
+            <p *ngIf="guest.dietary_restrictions" class="font-sans text-xs text-gray-500">
+              <span class="text-gold uppercase tracking-widest" style="letter-spacing: 0.08em;">Dietary: </span>{{ guest.dietary_restrictions }}
+            </p>
+            <p *ngIf="guest.message" class="font-sans text-xs text-gray-500 italic">
+              <span class="not-italic text-gold uppercase tracking-widest" style="letter-spacing: 0.08em;">Note: </span>{{ guest.message }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
