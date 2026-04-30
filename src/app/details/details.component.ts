@@ -16,8 +16,8 @@ export class DetailsComponent implements OnInit {
       venue: 'Cannario Rooftop',
       description: 'Kick off the weekend with drinks, music, and great company.',
       events: [
-        { time: '5:00 PM', event: 'Welcome Party Starts', description: 'Celebrate the start of the weekend with us at Cannario Rooftop' },
-        { time: '8:00 PM', event: 'Welcome Party Ends', description: 'Thanks for joining us for an unforgettable evening!' },
+        { time: '4:00 PM', event: 'Welcome Party Starts', description: 'Celebrate the start of the weekend with us at Cannario Rooftop' },
+        { time: '7:00 PM', event: 'Welcome Party Ends', description: 'Thanks for joining us for an unforgettable evening!' },
       ]
     },
     {
@@ -31,6 +31,7 @@ export class DetailsComponent implements OnInit {
         { time: '4:00 PM', event: 'Ceremony Begins', description: 'Join us as we exchange our vows' },
         { time: '5:00 PM', event: 'Cocktail Hour', description: 'Celebrate with drinks and hors d\'oeuvres' },
         { time: '6:00 PM', event: 'Reception & Dinner', description: 'Dinner and dancing with the newlyweds' },
+        { time: '8:00 PM', event: 'Party & Celebrate!', description: 'Dance the night away until midnight' },
       ]
     },
     {
