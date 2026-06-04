@@ -63,9 +63,22 @@
         </div>
       </div>
 
+      <!-- Filter Buttons -->
+      <div class="flex gap-2 flex-wrap mb-6">
+        <button *ngFor="let opt of filterOptions"
+          (click)="filter = opt.value"
+          class="font-sans text-xs tracking-widest uppercase px-4 py-2 border transition-all"
+          style="letter-spacing: 0.1em;"
+          [ngClass]="filter === opt.value
+            ? 'border-sage bg-sage text-cream'
+            : 'border-gold border-opacity-30 text-gray-400 hover:border-sage hover:text-sage'">
+          {{ opt.label }} ({{ opt.value === 'all' ? guests.length : opt.value === 'attending' ? attending.length : opt.value === 'declined' ? declined.length : pending.length }})
+        </button>
+      </div>
+
       <!-- Guest List -->
       <div class="space-y-3">
-        <div *ngFor="let guest of guests"
+        <div *ngFor="let guest of filteredGuests"
              class="border border-gold border-opacity-20 bg-white bg-opacity-50 p-5">
           <div class="flex items-start justify-between gap-4">
 

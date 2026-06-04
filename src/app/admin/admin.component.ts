@@ -67,6 +67,22 @@ export class AdminComponent {
     return this.guests.filter(g => g.attending_sunday === true).length;
   }
 
+  filter: 'all' | 'attending' | 'declined' | 'pending' = 'all';
+
+  readonly filterOptions: { value: 'all' | 'attending' | 'declined' | 'pending'; label: string }[] = [
+    { value: 'all',       label: 'All' },
+    { value: 'attending', label: 'Attending' },
+    { value: 'declined',  label: 'Declined' },
+    { value: 'pending',   label: 'Pending' },
+  ];
+
+  get filteredGuests(): Guest[] {
+    if (this.filter === 'attending') return this.attending;
+    if (this.filter === 'declined') return this.declined;
+    if (this.filter === 'pending') return this.pending;
+    return this.guests;
+  }
+
   copiedId: number | null = null;
 
   async toggleInviteSent(guest: Guest): Promise<void> {
