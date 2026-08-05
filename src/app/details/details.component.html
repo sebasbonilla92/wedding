@@ -45,6 +45,9 @@
         <p class="font-serif text-base text-gray-500 italic max-w-md mx-auto" style="font-family: 'Playfair Display', serif;">
           {{ day.description }}
         </p>
+        <p *ngIf="day.attire" class="font-sans text-xs tracking-widest uppercase text-sage mt-3" style="letter-spacing: 0.1em;">
+          Attire: {{ day.attire }}
+        </p>
       </div>
 
       <!-- Events Timeline -->

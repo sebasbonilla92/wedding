@@ -15,6 +15,7 @@ export class DetailsComponent implements OnInit {
       title: 'Welcome Party',
       venue: 'Cannario Rooftop',
       description: 'Kick off the weekend with drinks, music, and great company.',
+      attire: 'Cocktail Attire',
       events: [
         { time: '4:00 PM', event: 'Welcome Party Starts', description: 'Celebrate the start of the weekend with us at Cannario Rooftop' },
         { time: '7:00 PM', event: 'Welcome Party Ends', description: 'Thanks for joining us for an unforgettable evening!' },
@@ -41,7 +42,8 @@ export class DetailsComponent implements OnInit {
       venue: 'Around Antioquia',
       description: 'Close out the weekend on a traditional Colombian chiva through the beautiful small towns near Medellín.',
       events: [
-        { time: 'TBD', event: 'Chiva Departs', description: 'Hop on board — details coming soon' },
+        { time: '10:00 AM', event: 'Chiva Departs', description: 'Hop on board and let the party begin!' },
+        { time: '5:00 PM', event: 'Chiva Returns', description: 'Thanks for joining us for a fun-filled day!' },
       ]
     }
   ];

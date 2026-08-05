@@ -28,11 +28,17 @@
 
       <div class="grid md:grid-cols-3 gap-4">
         <div *ngFor="let place of cat.places"
-             class="border border-gold border-opacity-20 bg-white bg-opacity-50 p-5 text-center">
+             [class.border-2]="place.highlight" [class.border-opacity-100]="place.highlight"
+             [class.border]="!place.highlight" [class.border-opacity-20]="!place.highlight"
+             class="border-gold bg-white bg-opacity-50 p-5 text-center">
           <h3 class="font-serif text-lg text-sage mb-2" style="font-family: 'Playfair Display', serif;">
             {{ place.name }}
           </h3>
           <p class="font-sans text-sm text-gray-500 leading-relaxed">{{ place.note }}</p>
+          <a *ngIf="place.instagram" [href]="place.instagram" target="_blank" rel="noopener"
+             class="inline-block mt-2 text-xs text-gold hover:text-sage tracking-wide uppercase">
+            Instagram ↗
+          </a>
         </div>
       </div>
     </div>

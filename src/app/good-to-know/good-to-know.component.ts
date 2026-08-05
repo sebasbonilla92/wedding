@@ -27,7 +27,7 @@ export class GoodToKnowComponent implements OnInit {
     },
     {
       q: 'How do I get from the airport to El Poblado?',
-      a: 'José María Córdova International Airport (MDE) is about 45 km from El Poblado. We recommend using Uber or InDrive — expect to pay $80,000–$150,000 COP depending on the time of day. See our ',
+      a: 'José María Córdova International Airport (MDE) is about 45 km from El Poblado. We recommend using Uber or InDrive — expect to pay $100,000–$150,000 COP depending on the time of day. See our ',
       aAfter: ' page for full details.',
       linkText: 'Getting There',
       linkRoute: '/getting-there'
