@@ -1,3 +1,20 @@
+<!-- Sticky Nav -->
+<nav class="sticky-nav">
+  <div class="max-w-3xl mx-auto flex justify-center items-center gap-4 flex-wrap">
+    <a routerLink="/" class="font-sans text-xs tracking-widest uppercase text-gray-500 hover:text-sage transition-colors" style="letter-spacing: 0.12em;">Home</a>
+    <span class="text-gold opacity-40">·</span>
+    <a routerLink="/getting-there" class="font-sans text-xs tracking-widest uppercase text-gray-500 hover:text-sage transition-colors" style="letter-spacing: 0.12em;">Getting There</a>
+    <span class="text-gold opacity-40">·</span>
+    <a routerLink="/stay" class="font-sans text-xs tracking-widest uppercase text-gray-500 hover:text-sage transition-colors" style="letter-spacing: 0.12em;">Where to Stay</a>
+    <span class="text-gold opacity-40">·</span>
+    <a routerLink="/explore" class="font-sans text-xs tracking-widest uppercase text-gray-500 hover:text-sage transition-colors" style="letter-spacing: 0.12em;">Explore</a>
+    <span class="text-gold opacity-40">·</span>
+    <a routerLink="/faq" class="font-sans text-xs tracking-widest uppercase text-gray-500 hover:text-sage transition-colors" style="letter-spacing: 0.12em;">FAQ</a>
+    <span class="text-gold opacity-40">·</span>
+    <a routerLink="/" fragment="presents" class="font-sans text-xs tracking-widest uppercase text-gray-500 hover:text-sage transition-colors" style="letter-spacing: 0.12em;">Gifts</a>
+  </div>
+</nav>
+
 <router-outlet></router-outlet>
 
 <!-- Footer -->
@@ -47,6 +64,12 @@
          class="font-sans text-xs tracking-widest uppercase text-gray-400 hover:text-sage transition-colors"
          style="letter-spacing: 0.12em;">
         FAQ
+      </a>
+      <span class="text-gold opacity-40">·</span>
+      <a routerLink="/" fragment="presents"
+         class="font-sans text-xs tracking-widest uppercase text-gray-400 hover:text-sage transition-colors"
+         style="letter-spacing: 0.12em;">
+        Gifts
       </a>
     </div>
 

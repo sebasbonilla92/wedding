@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
+import { PresentsComponent } from './presents/presents.component';
 import { RsvpComponent } from './rsvp/rsvp.component';
 import { StayComponent } from './stay/stay.component';
 import { ExploreComponent } from './explore/explore.component';
@@ -21,6 +22,7 @@ import { AdminComponent } from './admin/admin.component';
     MainPageComponent,
     HomeComponent,
     DetailsComponent,
+    PresentsComponent,
     RsvpComponent,
     StayComponent,
     ExploreComponent,
@@ -32,7 +34,7 @@ import { AdminComponent } from './admin/admin.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }),
   ],
   bootstrap: [AppComponent],
 })

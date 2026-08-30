@@ -17,8 +17,8 @@ export class ExploreComponent implements OnInit {
       label: 'Eat & Drink',
       icon: '🍽',
       places: [
-        { name: 'El Cielo', note: 'Michelin-recognized tasting menu by chef Juan Manuel Barrientos — a theatrical, multi-sensory Colombian fine dining experience', instagram: 'https://www.instagram.com/elcielorestaurant/' },
         { name: 'Carmen', note: 'One of Medellín\'s most acclaimed restaurants — refined Colombian farm-to-table cuisine in an elegant El Poblado setting', instagram: 'https://www.instagram.com/carmenrestaurante/' },
+        { name: 'La Causa', note: 'Nikkei restaurant fusing Peruvian and Japanese cuisine — fresh ceviches, causas, sushi, and pokes with creative flavor combinations', instagram: 'https://www.instagram.com/lacausa.mde' },
         { name: 'Simah', note: 'Contemporary cuisine with panoramic city views along Las Palmas — striking presentation and a lively atmosphere', instagram: 'https://www.instagram.com/simah_restaurante/' },
         { name: 'Ritwal', note: 'Fusion cuisine and craft cocktails in a lush, dreamlike setting in Alto de los Balsos — one of the most photogenic spots in the city', instagram: 'https://www.instagram.com/ritwalmesamistica/' },
         { name: 'Wan', note: 'Stylish Japanese-Asian fusion restaurant in Provenza known for creative sushi and a great cocktail list', instagram: 'https://www.instagram.com/wan.restaurante/' },

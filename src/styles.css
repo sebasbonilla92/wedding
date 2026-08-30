@@ -6,6 +6,18 @@ html {
   scroll-behavior: smooth;
 }
 
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 14px 24px;
+  background-color: rgba(250, 247, 242, 0.96);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  backdrop-filter: blur(8px);
+}
+
 body {
   background-color: #F5F0E8;
   font-family: 'Raleway', sans-serif;

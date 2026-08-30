@@ -14,7 +14,8 @@ export class DetailsComponent implements OnInit {
       date: 'Sep 4',
       title: 'Welcome Party',
       venue: 'Cannario Rooftop',
-      description: 'Kick off the weekend with drinks, music, and great company.',
+      venueLink: 'https://www.instagram.com/cannario.rooftop',
+      description: 'Kick off wedding weekend with us — cocktails, music, and great company as the sun sets over the city.',
       attire: 'Cocktail Attire',
       events: [
         { time: '4:00 PM', event: 'Welcome Party Starts', description: 'Celebrate the start of the weekend with us at Cannario Rooftop' },
@@ -33,6 +34,7 @@ export class DetailsComponent implements OnInit {
         { time: '5:00 PM', event: 'Cocktail Hour', description: 'Celebrate with drinks and hors d\'oeuvres' },
         { time: '6:00 PM', event: 'Reception & Dinner', description: 'Dinner and dancing with the newlyweds' },
         { time: '8:00 PM', event: 'Party & Celebrate!', description: 'Dance the night away until midnight' },
+        { time: '12:00 AM', event: 'Wedding Ends', description: 'Thank you for celebrating with us!' },
       ]
     },
     {
@@ -42,7 +44,7 @@ export class DetailsComponent implements OnInit {
       venue: 'Around Antioquia',
       description: 'Close out the weekend on a traditional Colombian chiva through the beautiful small towns near Medellín.',
       events: [
-        { time: '10:00 AM', event: 'Chiva Departs', description: 'Hop on board and let the party begin!' },
+        { time: '10:00 AM', event: 'Chiva Departs', description: 'Hop on board from Selvario Hotel and let the party begin!' },
         { time: '5:00 PM', event: 'Chiva Returns', description: 'Thanks for joining us for a fun-filled day!' },
       ]
     }

@@ -40,7 +40,13 @@
         <h3 class="font-serif text-4xl text-sage font-light" style="font-family: 'Playfair Display', serif;">
           {{ day.title }}
         </h3>
-        <p class="font-sans text-sm text-gray-400 mt-1 tracking-wide">{{ day.venue }}</p>
+        <p class="mt-1 tracking-wide">
+          <a *ngIf="day.venueLink" [href]="day.venueLink" target="_blank" rel="noopener noreferrer"
+             class="font-sans text-lg text-sage hover:text-gold transition-colors underline-offset-4 hover:underline">
+            {{ day.venue }}
+          </a>
+          <span *ngIf="!day.venueLink" class="font-sans text-sm text-gray-400">{{ day.venue }}</span>
+        </p>
         <div class="w-12 h-px bg-gold mx-auto my-4 opacity-60"></div>
         <p class="font-serif text-base text-gray-500 italic max-w-md mx-auto" style="font-family: 'Playfair Display', serif;">
           {{ day.description }}
