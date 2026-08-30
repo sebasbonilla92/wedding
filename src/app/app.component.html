@@ -1,6 +1,7 @@
 <!-- Sticky Nav -->
 <nav class="sticky-nav">
-  <div class="max-w-3xl mx-auto flex justify-center items-center gap-4 flex-wrap">
+  <!-- Desktop links -->
+  <div class="hidden md:flex max-w-3xl mx-auto justify-center items-center gap-4 flex-wrap">
     <a routerLink="/" class="font-sans text-xs tracking-widest uppercase text-gray-500 hover:text-sage transition-colors" style="letter-spacing: 0.12em;">Home</a>
     <span class="text-gold opacity-40">·</span>
     <a routerLink="/getting-there" class="font-sans text-xs tracking-widest uppercase text-gray-500 hover:text-sage transition-colors" style="letter-spacing: 0.12em;">Getting There</a>
@@ -12,6 +13,29 @@
     <a routerLink="/faq" class="font-sans text-xs tracking-widest uppercase text-gray-500 hover:text-sage transition-colors" style="letter-spacing: 0.12em;">FAQ</a>
     <span class="text-gold opacity-40">·</span>
     <a routerLink="/" fragment="presents" class="font-sans text-xs tracking-widest uppercase text-gray-500 hover:text-sage transition-colors" style="letter-spacing: 0.12em;">Gifts</a>
+  </div>
+
+  <!-- Mobile bar: monogram + hamburger toggle -->
+  <div class="flex md:hidden items-center justify-between">
+    <a routerLink="/" (click)="closeMobileMenu()" class="font-script text-xl text-sage leading-none" style="font-family: 'Great Vibes', cursive;">G &amp; S</a>
+    <button (click)="toggleMobileMenu()" type="button" aria-label="Toggle menu" class="p-1.5 text-sage">
+      <svg *ngIf="!mobileMenuOpen" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <svg *ngIf="mobileMenuOpen" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile dropdown -->
+  <div *ngIf="mobileMenuOpen" class="md:hidden mobile-nav-panel flex flex-col mt-3 -mx-6 border-t border-gold border-opacity-20">
+    <a routerLink="/" (click)="closeMobileMenu()" class="font-sans text-xs tracking-widest uppercase text-gray-500 hover:text-sage transition-colors px-6 py-3 border-b border-gold border-opacity-10" style="letter-spacing: 0.12em;">Home</a>
+    <a routerLink="/getting-there" (click)="closeMobileMenu()" class="font-sans text-xs tracking-widest uppercase text-gray-500 hover:text-sage transition-colors px-6 py-3 border-b border-gold border-opacity-10" style="letter-spacing: 0.12em;">Getting There</a>
+    <a routerLink="/stay" (click)="closeMobileMenu()" class="font-sans text-xs tracking-widest uppercase text-gray-500 hover:text-sage transition-colors px-6 py-3 border-b border-gold border-opacity-10" style="letter-spacing: 0.12em;">Where to Stay</a>
+    <a routerLink="/explore" (click)="closeMobileMenu()" class="font-sans text-xs tracking-widest uppercase text-gray-500 hover:text-sage transition-colors px-6 py-3 border-b border-gold border-opacity-10" style="letter-spacing: 0.12em;">Explore</a>
+    <a routerLink="/faq" (click)="closeMobileMenu()" class="font-sans text-xs tracking-widest uppercase text-gray-500 hover:text-sage transition-colors px-6 py-3 border-b border-gold border-opacity-10" style="letter-spacing: 0.12em;">FAQ</a>
+    <a routerLink="/" fragment="presents" (click)="closeMobileMenu()" class="font-sans text-xs tracking-widest uppercase text-gray-500 hover:text-sage transition-colors px-6 py-3" style="letter-spacing: 0.12em;">Gifts</a>
   </div>
 </nav>
 
