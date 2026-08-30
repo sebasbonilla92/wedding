@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsComponent implements OnInit {
   selectedDay = 1;
+  zellePhone = '832-659-2918';
+  phoneCopied = false;
 
   days = [
     {
@@ -29,6 +31,7 @@ export class DetailsComponent implements OnInit {
       venue: 'Le Pinot',
       description: 'The big day. Join us as we say I do at Le Pinot in Envigado.',
       events: [
+        { time: '3:00 PM', event: 'Transportation Pickup', description: 'Complimentary transportation departs from Selvario Hotel' },
         { time: '3:30 PM', event: 'Guests Arrive', description: 'Please arrive and find your seats' },
         { time: '4:00 PM', event: 'Ceremony Begins', description: 'Join us as we exchange our vows' },
         { time: '5:00 PM', event: 'Cocktail Hour', description: 'Celebrate with drinks and hors d\'oeuvres' },
@@ -52,6 +55,12 @@ export class DetailsComponent implements OnInit {
 
   selectDay(index: number): void {
     this.selectedDay = index;
+  }
+
+  copyPhone(): void {
+    navigator.clipboard.writeText(this.zellePhone);
+    this.phoneCopied = true;
+    setTimeout(() => this.phoneCopied = false, 2000);
   }
 
   ngOnInit(): void {
